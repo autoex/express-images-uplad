@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const deleteTag = (req, res) => {
-  const tag = req.body.tag;
+const deleteHandler = (req, res) => {
+  const tag = req.params.tag;
   const tagsText = fs.readFileSync(path.join(process.cwd(), 'db', 'tags.json'));
   const tags = JSON.parse(tagsText);
   const tagIdForDelete = tags.indexOf(tag);
@@ -20,4 +20,4 @@ const deleteTag = (req, res) => {
   });
 };
 
-module.exports = deleteTag;
+module.exports = deleteHandler;
